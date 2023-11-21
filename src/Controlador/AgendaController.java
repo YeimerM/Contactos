@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.Agenda;
 import Vista.AddContactoPanel;
 import Vista.AgendaView;
 import Vista.VerContactosPanel;
@@ -10,9 +11,11 @@ import java.awt.event.ActionListener;
 
 public class AgendaController {
     private AgendaView view;
+    private Agenda model;
 
-    public AgendaController(AgendaView view){
+    public AgendaController(AgendaView view, Agenda model){
         this.view = view;
+        this.model = model;
 
         view.addListarbtnListener(new VerContactosListener());
         view.addAgregarbtnListener(new AddContactosListener());
@@ -61,7 +64,7 @@ public class AgendaController {
 
     public JPanel getPanelAddContacto(){
         AddContactoPanel addContactosView = new AddContactoPanel();
-        AddContactoCtrller addContactoCtrller = new AddContactoCtrller(addContactosView);
+        AddContactoCtrller addContactoCtrller = new AddContactoCtrller(addContactosView, model);
         return addContactosView.getPanelContenido();
     }
 }

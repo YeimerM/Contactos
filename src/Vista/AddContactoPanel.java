@@ -2,6 +2,7 @@ package Vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class AddContactoPanel {
 
@@ -12,6 +13,9 @@ public class AddContactoPanel {
     private JButton btnGuardar;
     private JButton btnMenu;
     private JPanel panelBotones;
+    private JButton btnMasDirecciones;
+    private JButton btnMasTelefonos;
+    private JComboBox<String> tipoTelefono;
 
     public AddContactoPanel(){
         initComp();
@@ -50,6 +54,10 @@ public class AddContactoPanel {
         txtfDirecciones = new JTextField("",10);
         panelDatos.add(txtfDirecciones,gbc);
 
+        gbc.gridx = 4;
+        btnMasDirecciones = new JButton("+");
+        panelDatos.add(btnMasDirecciones,gbc);
+
         gbc.gridx = 0;
         gbc.gridy = 1;
         lblFechaN = new JLabel("Fecha de Nacimiento");
@@ -66,6 +74,21 @@ public class AddContactoPanel {
         gbc.gridx = 3;
         txtfTelefonos = new JTextField("",10);
         panelDatos.add(txtfTelefonos,gbc);
+
+        gbc.gridx = 4;
+        tipoTelefono = new JComboBox<String>();
+
+        tipoTelefono.addItem("Móvil");
+        tipoTelefono.addItem("Casa");
+        tipoTelefono.addItem("Oficina");
+
+        panelDatos.add(tipoTelefono,gbc);
+
+        gbc.gridx = 5;
+        btnMasTelefonos = new JButton("+");
+        panelDatos.add(btnMasTelefonos,gbc);
+
+
 
         gbc.gridx = 0;
         gbc.gridy = 2;
@@ -111,5 +134,44 @@ public class AddContactoPanel {
 
     public JPanel getPanelContenido() {
         return panelContenido;
+    }
+
+    public JTextField getTxtfId() {
+        return txtfId;
+    }
+
+    public JTextField getTxtfFechaN() {
+        return txtfFechaN;
+    }
+
+    public JTextField getTxtfNombres() {
+        return txtfNombres;
+    }
+
+    public JTextField getTxtfApellidos() {
+        return txtfApellidos;
+    }
+
+    public JTextField getTxtfDirecciones() {
+        return txtfDirecciones;
+    }
+
+    public JTextField getTxtfTelefonos() {
+        return txtfTelefonos;
+    }
+
+    public JTextField getTxtfTipoContacto() {
+        return txtfTipoContacto;
+    }
+
+    public String getTipoTelefono() {
+        return (String)tipoTelefono.getSelectedItem();
+    }
+
+    public void addGuardarBtnListener(ActionListener listener){
+        btnGuardar.addActionListener(listener);
+    }
+    public void addMenuBtnListener(ActionListener listener){
+        btnMenu.addActionListener(listener);
     }
 }

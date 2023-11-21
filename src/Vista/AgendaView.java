@@ -21,7 +21,7 @@ public class AgendaView extends JFrame {
 
     private void initComp() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(600, 800);
+        this.setSize(650, 850);
         this.setTitle("Agenda Univalle");
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagenes/iconoUV.jpg")));
         this.setLocationRelativeTo(null);

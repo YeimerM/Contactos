@@ -4,7 +4,7 @@ public class Telefono{
     private String numero;
     private TipoTelefono tipoTelefono;
 
-    public Telefono(){
+    public Telefono(String numero, TipoTelefono tipoTelefono){
 
     }
 

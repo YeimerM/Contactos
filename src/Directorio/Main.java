@@ -13,7 +13,7 @@ public class Main {
             public void run() {
                 Agenda model = new Agenda();
                 AgendaView view = new AgendaView();
-                AgendaController pruebasCtrller = new AgendaController(view);
+                AgendaController pruebasCtrller = new AgendaController(view,model);
             }
         });
     }

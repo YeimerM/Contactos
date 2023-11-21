@@ -7,19 +7,11 @@ public class AddContactoPanel {
 
     private JPanel panelContenido;
 
-    /*
-
-this.id = id;
-this.fechaNacimiento = fechaNacimiento;
-this.nombres = nombres;
-this.apellidos = apellidos;
-this.direcciones = direcciones;
-this.telefonos = telefonos;
-this.tipoContacto = tipoContacto;
-
-*/
     private JLabel lblId, lblFechaN, lblNombres, lblApellidos, lblDirecciones, lblTelefonos, lblTipoContacto;
     private JTextField txtfId, txtfFechaN, txtfNombres, txtfApellidos, txtfDirecciones, txtfTelefonos, txtfTipoContacto;
+    private JButton btnGuardar;
+    private JButton btnMenu;
+    private JPanel panelBotones;
 
     public AddContactoPanel(){
         initComp();
@@ -102,9 +94,18 @@ this.tipoContacto = tipoContacto;
         panelDatos.add(txtfApellidos,gbc);
 
 
+        // Botones inferiores
+        panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER,20,20));
+
+        btnMenu = new JButton("Regresar al Menu");
+        panelBotones.add(btnMenu);
+
+        btnGuardar = new JButton("Guardar Contacto");
+        panelBotones.add(btnGuardar);
 
 
-        panelContenido.add(panelDatos);
+        panelContenido.add(panelDatos,BorderLayout.CENTER);
+        panelContenido.add(panelBotones, BorderLayout.SOUTH);
         panelContenido.setVisible(true);
     }
 

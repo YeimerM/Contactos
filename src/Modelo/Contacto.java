@@ -5,7 +5,6 @@ import java.util.List;
 public class Contacto {
     private int id;
     private String fechaNacimiento;
-    private String numeroIdentificacion;
     private String nombres;
     private String apellidos;
     private List<Direccion> direcciones;
@@ -13,10 +12,9 @@ public class Contacto {
     private TipoContacto tipoContacto;
 
     // Método Constructor
-    public Contacto(int id, String fechaNacimiento, String numeroIdentificacion, String nombres, String apellidos, List<Direccion> direcciones, List<Telefono> telefonos, TipoContacto tipoContacto) {
+    public Contacto(int id, String fechaNacimiento, String nombres, String apellidos, List<Direccion> direcciones, List<Telefono> telefonos, TipoContacto tipoContacto) {
         this.id = id;
         this.fechaNacimiento = fechaNacimiento;
-        this.numeroIdentificacion = numeroIdentificacion;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.direcciones = direcciones;
@@ -39,14 +37,6 @@ public class Contacto {
 
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public String getNumeroIdentificacion() {
-        return numeroIdentificacion;
-    }
-
-    public void setNumeroIdentificacion(String numeroIdentificacion) {
-        this.numeroIdentificacion = numeroIdentificacion;
     }
 
     public String getNombres() {
@@ -97,6 +87,19 @@ public class Contacto {
 
     public void agregarTelefono(Telefono telefono) {
         telefonos.add(telefono);
+    }
+
+    @Override
+    public String toString() {
+        return "Contacto{" +
+                "id=" + id +
+                ", fechaNacimiento='" + fechaNacimiento + '\'' +
+                ", nombres='" + nombres + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", direcciones=" + direcciones +
+                ", telefonos=" + telefonos +
+                ", tipoContacto=" + tipoContacto +
+                '}';
     }
 }
 

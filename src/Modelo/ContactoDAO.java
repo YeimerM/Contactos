@@ -7,6 +7,7 @@ public interface ContactoDAO {
     Contacto obtenerContactoPorId(int id);
     List<Contacto> obtenerContactosPorTipo(TipoContacto tipoContacto);
     boolean agregarContacto(Contacto contacto);
-    boolean actualizarContacto(int id);
+    boolean actualizarContacto(Contacto contacto);
     boolean eliminarContacto(int id);
+    boolean existeContacto(int id);
 }

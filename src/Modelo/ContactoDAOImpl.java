@@ -9,7 +9,6 @@ public class ContactoDAOImpl implements ContactoDAO {
     private List<Contacto> listaContactos;
     private Map<TipoContacto, List<Contacto>> mapaContactos; // Contactos en HashMap
 
-
     public ContactoDAOImpl() {
         listaContactos = new ArrayList<>();
         mapaContactos = new EnumMap<>(TipoContacto.class);
@@ -23,15 +22,13 @@ public class ContactoDAOImpl implements ContactoDAO {
     @Override
     public Contacto obtenerContactoPorId(int id) {
         // Implementar la búsqueda por ID
-        Contacto contacto = null;
 
         for(Contacto actual : listaContactos) {
             if(actual.getId() == id){
-                contacto = actual;
-                break;
+                return actual;
             }
         }
-        return contacto;
+        return null;
     }
     @Override
     public List<Contacto> obtenerContactosPorTipo(TipoContacto tipoContacto){
@@ -47,25 +44,29 @@ public class ContactoDAOImpl implements ContactoDAO {
     }
 
     @Override
-    public boolean actualizarContacto(int id) {
-        // Implementar la actualización del contacto
-        Contacto contacto = obtenerContactoPorId(id);
-        if(listaContactos.contains(contacto)){
-            int pos = listaContactos.indexOf(contacto);
-            listaContactos.set(pos, contacto);
+    public boolean actualizarContacto(Contacto contactoActualizado) {
+        if (existeContacto(contactoActualizado.getId())) {
+            Contacto contactoExistente = obtenerContactoPorId(contactoActualizado.getId());
+            int pos = listaContactos.indexOf(contactoExistente);
+            listaContactos.set(pos, contactoActualizado);
             return true;
         }
-        return true;
+        return false;
+    }
+    @Override
+    public boolean existeContacto(int id) {
+        Contacto contactoExistente = obtenerContactoPorId(id);
+        return listaContactos.contains(contactoExistente);
     }
 
     @Override
     public boolean eliminarContacto(int id) {
         // Implementar la eliminación del contacto
-        Contacto contacto = obtenerContactoPorId(id);
-        boolean contieneContacto = listaContactos.contains(contacto);
+        boolean contieneContacto = existeContacto(id);
         if(contieneContacto){
-            listaContactos.remove(contacto);
+            listaContactos.remove(obtenerContactoPorId(id));
             return true;
-        } else return contieneContacto;
+        }
+        return false;
     }
 }

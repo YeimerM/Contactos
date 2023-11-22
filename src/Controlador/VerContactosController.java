@@ -113,7 +113,7 @@ public class VerContactosController {
             texto.append(" - ").append(telefono.getNumero()).append("\n");
         }
 
-        texto.append("Tipo de Contacto: ").append(contacto.getTipoContacto()).append("\n");
+        //texto.append("  Tipo de Contacto: ").append(contacto.getTipoContacto()).append("\n");
 
         return texto.toString();
     }

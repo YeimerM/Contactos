@@ -1,10 +1,7 @@
 package Controlador;
 
 import Modelo.Agenda;
-import Vista.AddContactoPanel;
-import Vista.AgendaView;
-import Vista.DelContactoPanel;
-import Vista.VerContactosPanel;
+import Vista.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +17,7 @@ public class AgendaController {
 
         view.addListarbtnListener(new VerContactosListener());
         view.addAgregarbtnListener(new AddContactosListener());
-        view.addActualizarbtnListener(new ActContactosListener());
+        view.addActualizarbtnListener(new UpdContactosListener());
         view.addEliminarbtnListener(new DelContactosListener());
     }
 
@@ -43,10 +40,12 @@ public class AgendaController {
         }
     }
 
-    class ActContactosListener implements ActionListener{
+    class UpdContactosListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Act Cont");
+            view.getPanelPrincipal().add(getPanelUpdContacto(),"UpdContacto");
+            view.getCardLayout().show(view.getPanelPrincipal(),"UpdContacto");
         }
     }
 
@@ -75,5 +74,10 @@ public class AgendaController {
         DelContactoPanel delContactoView = new DelContactoPanel();
         DelContactoCtrller delContactoCtrller = new DelContactoCtrller(delContactoView,model);
         return delContactoView.getPanelContenido();
+    }
+    public JPanel getPanelUpdContacto(){
+        UpdContactoPanel updContactoView = new UpdContactoPanel();
+        UpdContactoCtrller updContactoCtrller = new UpdContactoCtrller(updContactoView,model);
+        return updContactoView.getPanelContenido();
     }
 }

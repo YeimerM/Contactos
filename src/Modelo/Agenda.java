@@ -24,8 +24,8 @@ public class Agenda {
         return this.contactoDao.agregarContacto(contacto);
     }
 
-    public boolean actualizarContacto(Contacto contacto) {
-        return this.contactoDao.actualizarContacto(contacto);
+    public boolean actualizarContacto(int id) {
+        return this.contactoDao.actualizarContacto(id);
     }
 
     public boolean eliminarContacto(int id) {

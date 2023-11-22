@@ -16,6 +16,7 @@ public class AddContactoPanel {
     private JButton btnMasDirecciones;
     private JButton btnMasTelefonos;
     private JComboBox<String> tipoTelefono;
+    private JComboBox<String> tipoContacto;
 
     public AddContactoPanel(){
         initComp();
@@ -104,8 +105,11 @@ public class AddContactoPanel {
         panelDatos.add(lblTipoContacto,gbc);
 
         gbc.gridx = 3;
-        txtfTipoContacto = new JTextField("",10);
-        panelDatos.add(txtfTipoContacto,gbc);
+        tipoContacto = new JComboBox<String>();
+        tipoContacto.addItem("Estudiante");
+        tipoContacto.addItem("Profesor");
+        tipoContacto.addItem("Empleado");
+        panelDatos.add(tipoContacto,gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 3;
@@ -166,6 +170,9 @@ public class AddContactoPanel {
 
     public String getTipoTelefono() {
         return (String)tipoTelefono.getSelectedItem();
+    }
+    public String getTipoContacto(){
+        return (String) tipoContacto.getSelectedItem();
     }
 
     public void addGuardarBtnListener(ActionListener listener){

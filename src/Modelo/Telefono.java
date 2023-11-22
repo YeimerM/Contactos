@@ -5,7 +5,8 @@ public class Telefono{
     private TipoTelefono tipoTelefono;
 
     public Telefono(String numero, TipoTelefono tipoTelefono){
-
+        this.numero = numero;
+        this.tipoTelefono = tipoTelefono;
     }
 
     public String getNumero() {

@@ -10,6 +10,12 @@ public class VerContactosPanel {
     private JButton btnProfesor;
     private JButton btnEmpleado;
     private JPanel panelContenido;
+    private JButton btnRegresar;
+    private JPanel panelTipos;
+    private JPanel panelInfo;
+    private JList<Object> infoContactos;
+    private DefaultListModel<Object> modeloLista;
+    private JPanel panelBotones;
 
     public VerContactosPanel(){
         initComp();
@@ -28,8 +34,8 @@ public class VerContactosPanel {
         };
 
 
-        JPanel panelBotones = new JPanel(new GridBagLayout());
-        panelBotones.setOpaque(false);
+        panelTipos = new JPanel(new GridBagLayout());
+        panelTipos.setOpaque(false);
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
@@ -55,13 +61,17 @@ public class VerContactosPanel {
 
         gbc.gridx = 0;
         gbc.gridy = 0;
-        panelBotones.add(btnEstudiante,gbc);
+        panelTipos.add(btnEstudiante,gbc);
         gbc.gridy = 1;
-        panelBotones.add(btnProfesor,gbc);
+        panelTipos.add(btnProfesor,gbc);
         gbc.gridy = 2;
-        panelBotones.add(btnEmpleado,gbc);
+        panelTipos.add(btnEmpleado,gbc);
 
-        panelContenido.add(panelBotones, BorderLayout.CENTER);
+        btnRegresar = new JButton("Regresar");
+
+
+
+        panelContenido.add(panelTipos, BorderLayout.CENTER);
         panelContenido.setVisible(true);
     }
 
@@ -69,7 +79,52 @@ public class VerContactosPanel {
         return panelContenido;
     }
 
-    public void addLabelListener(ActionListener listener) {
+    public DefaultListModel<Object> getModeloLista() {
+        return modeloLista;
+    }
 
+    public JPanel getPanelTipos() {
+        return panelTipos;
+    }
+
+    public JPanel getPanelInfo() {
+        return panelInfo;
+    }
+
+    public JPanel getPanelBotones() {
+        return panelBotones;
+    }
+
+    public void verInfoContactos() {
+        panelTipos.setVisible(false);
+        panelInfo = new JPanel(new BorderLayout()); // antes panelEstudiante
+        modeloLista = new DefaultListModel<>();
+
+        infoContactos = new JList<>(modeloLista); // antes contactoEstudiantes
+        JScrollPane scrollPane = new JScrollPane(infoContactos);
+
+        panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        panelBotones.add(btnRegresar);
+
+
+        panelInfo.add(scrollPane, BorderLayout.CENTER);
+        panelInfo.add(panelBotones, BorderLayout.SOUTH);
+        panelContenido.add(panelInfo, BorderLayout.CENTER);
+
+        panelContenido.add(panelInfo,BorderLayout.CENTER);
+        panelContenido.add(panelBotones,BorderLayout.SOUTH);
+    }
+
+    public void addEstudianteBtnListener(ActionListener listener) {
+        btnEstudiante.addActionListener(listener);
+    }
+    public void addProfesorBtnListener(ActionListener listener) {
+        btnProfesor.addActionListener(listener);
+    }
+    public void addEmpleadoBtnListener(ActionListener listener) {
+        btnEmpleado.addActionListener(listener);
+    }
+    public void addRegresarBtnListener(ActionListener listener){
+        btnRegresar.addActionListener(listener);
     }
 }

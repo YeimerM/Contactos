@@ -47,8 +47,9 @@ public class ContactoDAOImpl implements ContactoDAO {
     }
 
     @Override
-    public boolean actualizarContacto(Contacto contacto) {
+    public boolean actualizarContacto(int id) {
         // Implementar la actualización del contacto
+        Contacto contacto = obtenerContactoPorId(id);
         if(listaContactos.contains(contacto)){
             int pos = listaContactos.indexOf(contacto);
             listaContactos.set(pos, contacto);
@@ -61,7 +62,10 @@ public class ContactoDAOImpl implements ContactoDAO {
     public boolean eliminarContacto(int id) {
         // Implementar la eliminación del contacto
         Contacto contacto = obtenerContactoPorId(id);
-        listaContactos.remove(contacto);
-        return true;
+        boolean contieneContacto = listaContactos.contains(contacto);
+        if(contieneContacto){
+            listaContactos.remove(contacto);
+            return true;
+        } else return contieneContacto;
     }
 }

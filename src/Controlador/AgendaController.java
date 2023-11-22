@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Agenda;
 import Vista.AddContactoPanel;
 import Vista.AgendaView;
+import Vista.DelContactoPanel;
 import Vista.VerContactosPanel;
 
 import javax.swing.*;
@@ -53,12 +54,14 @@ public class AgendaController {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Del Cont");
+            view.getPanelPrincipal().add(getPanelDelContacto(),"DelContacto");
+            view.getCardLayout().show(view.getPanelPrincipal(),"DelContacto");
         }
     }
 
     public JPanel getPanelListaContactos() {
         VerContactosPanel contactosView = new VerContactosPanel();
-        VerContactosController contactosController = new VerContactosController(contactosView);
+        VerContactosController contactosController = new VerContactosController(contactosView, model);
         return contactosView.getPanelContenido(); // retornar el panel a mostrar (En el panel que se quiere tomar hacer funcion que devuelva ese panel)
     }
 
@@ -66,5 +69,11 @@ public class AgendaController {
         AddContactoPanel addContactosView = new AddContactoPanel();
         AddContactoCtrller addContactoCtrller = new AddContactoCtrller(addContactosView, model);
         return addContactosView.getPanelContenido();
+    }
+
+    public JPanel getPanelDelContacto(){
+        DelContactoPanel delContactoView = new DelContactoPanel();
+        DelContactoCtrller delContactoCtrller = new DelContactoCtrller(delContactoView,model);
+        return delContactoView.getPanelContenido();
     }
 }
